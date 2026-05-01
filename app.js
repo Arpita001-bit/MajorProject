@@ -126,8 +126,13 @@ app.all(/(.*)/,(req,res,next)=>{
 // });
 
 app.use((err, req, res, next) => {
-    console.log("🔥 FULL ERROR:", err);   // 👈 ADD THIS
-    res.send(err.message);                // 👈 SHOW ERROR IN BROWSER
+  console.log("🔥🔥🔥 REAL ERROR BELOW 🔥🔥🔥");
+  console.log(err);
+
+  res.send(`
+    <h1>REAL ERROR</h1>
+    <pre>${err.stack}</pre>
+  `);
 });
     app.listen(8080,()=>{
     console.log("server is listening to port");
