@@ -27,14 +27,7 @@ const listingController = require("../controllers/listing.js");
 
 router.route ("/")
 .get(wrapAsync(listingController.index))
-// .post(
-//     isLoggedIn,
-//    upload.single("listing[image]"),
-//     validateListings,    
-//     wrapAsync(listingController.createListing)
-// );
-// .post(isLoggedIn,validateListings,upload.single("listing[image]"),
-router.post(
+.post(
   "/",
   isLoggedIn,
   validateListings,
