@@ -63,7 +63,7 @@ module.exports.index = async(req,res)=>{
 
       let url = req.file.path;
       let filename = req.file.filename;
-      listings.image ={url,filename};
+      listing.image ={url,filename};
       req.flash("success","changes made successfully ...");
 
       
