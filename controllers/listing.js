@@ -29,11 +29,12 @@ module.exports.index = async(req,res)=>{
 
  module.exports.createListing = async (req,res,next)=>{
   
- let url = req.file.path;
- let filename = req.file.filename;
+ 
        
      const newListings = new Listing(req.body.listing);
      newListings.owner = req.user._id; 
+     let url = req.file.path;
+     let filename = req.file.filename;
      newListings.image ={url,filename};
      await newListings.save();
      req.flash("success","new listing created...");
@@ -64,6 +65,7 @@ module.exports.index = async(req,res)=>{
       let url = req.file.path;
       let filename = req.file.filename;
       listing.image ={url,filename};
+      await listing.save();
       req.flash("success","changes made successfully ...");
 
       
