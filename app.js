@@ -29,6 +29,7 @@ app.use(express.urlencoded({extended:true}));
 app.use(methodOverride("_method"));
 app.use(express.static(path.join(__dirname, '/public')));
 
+
 const store = MongoStore.create({
     mongoUrl:dbUrl,
     crypto:{
@@ -118,12 +119,16 @@ app.use("/",userRouter);
 app.all(/(.*)/,(req,res,next)=>{
     next(new ExpressError(404,"page not found !"));
  });
- app.use((err,req,res,next)=>{
-    let {statusCode=500,message="something went wrong!"}=err;
-    // res.status(statusCode).send(message);
-    res.render("error.ejs",{message});
-});
+//  app.use((err,req,res,next)=>{
+//     let {statusCode=500,message="something went wrong!"}=err;
+//     // res.status(statusCode).send(message);
+//     res.render("error.ejs",{message});
+// });
 
+app.use((err, req, res, next) => {
+    console.log("🔥 FULL ERROR:", err);   // 👈 ADD THIS
+    res.send(err.message);                // 👈 SHOW ERROR IN BROWSER
+});
     app.listen(8080,()=>{
     console.log("server is listening to port");
 });
