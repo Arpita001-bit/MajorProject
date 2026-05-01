@@ -30,6 +30,11 @@ router.route ("/")
 .post(
   isLoggedIn,
   upload.single("image"),
+  (req, res, next) => {
+    console.log("BODY:", req.body);   // ← add this
+    console.log("FILE:", req.file);   // ← add this
+    next();
+  },
   wrapAsync(listingController.createListing)
 )
 
