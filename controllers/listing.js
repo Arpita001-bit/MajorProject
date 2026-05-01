@@ -28,15 +28,12 @@ module.exports.index = async(req,res)=>{
  };
 
  module.exports.createListing = async (req,res,next)=>{
-  
- 
-       
-     const newListings = new Listing(req.body.listing);
-     newListings.owner = req.user._id; 
+    const newListings = new Listing(req.body.listing);
+     newListing.owner = req.user._id; 
      let url = req.file.path;
      let filename = req.file.filename;
-     newListings.image ={url,filename};
-     await newListings.save();
+     newListing.image ={url,filename};
+     await newListing.save();
      req.flash("success","new listing created...");
      res.redirect("/listings");
  
