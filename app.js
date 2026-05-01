@@ -29,6 +29,7 @@ const store = MongoStore.create({
     mongoUrl:dbUrl,
     crypto:{
         secret:process.env.SECRET,
+        
     },
     touchAfter:24*3600,
 });
@@ -60,8 +61,8 @@ async function main(){
 
 
 
-store.on("error",()=>{
-    console.log("ERROR IN MONGO SESSION STORE",err);
+store.on("error", (err) => {
+    console.log("ERROR IN MONGO SESSION STORE", err);
 });
 
 app.use(session(sessionOptions));
