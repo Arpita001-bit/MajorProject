@@ -27,46 +27,46 @@ module.exports.index = async(req,res)=>{
 
  };
 
-//  module.exports.createListing = async (req,res,next)=>{
-//     const newListing = new Listing(req.body.listing);
-//      newListing.owner = req.user._id; 
-//      if (req.file) {
-//   let url = req.file.path;
-//   let filename = req.file.filename;
-//   newListing.image = { url, filename };
-// }
-//     //  newListing.image ={url,filename};
-//      await newListing.save();
-//      req.flash("success","new listing created...");
-//      res.redirect("/listings");
+ module.exports.createListing = async (req,res,next)=>{
+    const newListing = new Listing(req.body.listing);
+     newListing.owner = req.user._id; 
+     if (req.file) {
+  let url = req.file.path;
+  let filename = req.file.filename;
+  newListing.image = { url, filename };
+}
+    //  newListing.image ={url,filename};
+     await newListing.save();
+     req.flash("success","new listing created...");
+     res.redirect("/listings");
  
     
-//   };
-module.exports.createListing = async (req, res, next) => {
-  try {
-    console.log("BODY:", req.body);
-    console.log("FILE:", req.file);
-    console.log("USER:", req.user);
+  };
+// module.exports.createListing = async (req, res, next) => {
+//   try {
+//     console.log("BODY:", req.body);
+//     console.log("FILE:", req.file);
+//     console.log("USER:", req.user);
 
-    const newListing = new Listing(req.body.listing);
-    newListing.owner = req.user._id;
+//     const newListing = new Listing(req.body.listing);
+//     newListing.owner = req.user._id;
 
-    if (req.file) {
-      let url = req.file.path;
-      let filename = req.file.filename;
-      newListing.image = { url, filename };
-    }
+//     if (req.file) {
+//       let url = req.file.path;
+//       let filename = req.file.filename;
+//       newListing.image = { url, filename };
+//     }
 
-    await newListing.save();
+//     await newListing.save();
 
-    req.flash("success", "new listing created...");
-    res.redirect("/listings");
+//     req.flash("success", "new listing created...");
+//     res.redirect("/listings");
 
-  } catch (err) {
-    console.log("ERROR:", err);
-    next(err);
-  }
-};
+//   } catch (err) {
+//     console.log("ERROR:", err);
+//     next(err);
+//   }
+// };
     
  
 

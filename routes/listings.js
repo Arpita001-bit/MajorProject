@@ -29,7 +29,7 @@ router.route ("/")
 .get(wrapAsync(listingController.index))
 .post(
   isLoggedIn,
-  validateListings,
+  
   upload.single("image"),
   wrapAsync(listingController.createListing)
 );
