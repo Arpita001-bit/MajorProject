@@ -28,7 +28,7 @@ module.exports.index = async(req,res)=>{
  };
 
  module.exports.createListing = async (req,res,next)=>{
-    const newListings = new Listing(req.body.listing);
+    const newListing = new Listing(req.body.listing);
      newListing.owner = req.user._id; 
      let url = req.file.path;
      let filename = req.file.filename;
