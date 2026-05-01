@@ -30,17 +30,8 @@ router.route ("/")
 .post(
   isLoggedIn,
   upload.single("image"),
-  listingController.createListing   // 👈 NO wrapAsync
+  wrapAsync(listingController.createListing)
 )
-// .post(
-//   isLoggedIn,
-  
-//   upload.single("image"),
-//   wrapAsync(listingController.createListing)
-// );
-
-// wrapAsync(listingController.createListing));
-
 
 
 
