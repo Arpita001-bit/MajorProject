@@ -112,7 +112,10 @@ const validateReview=(req,res,next)=>{
  
 
 
-
+app.use((req,res,next)=>{
+  console.log("ROUTE HIT:", req.method, req.path);
+  next();
+});
 app.use("/listings",listingsRouter);
 app.use("/listings/:id/reviews",reviewsRouter);
 app.use("/",userRouter);
