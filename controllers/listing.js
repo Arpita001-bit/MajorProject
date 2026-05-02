@@ -27,7 +27,9 @@ module.exports.index = async(req,res)=>{
 
  };
  
- module.exports.createListing = async (req, res) => {
+
+
+module.exports.createListing = async (req, res) => {
   if (!req.user) {
     req.flash("error", "You must be logged in");
     return res.redirect("/login");
