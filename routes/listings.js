@@ -29,8 +29,9 @@ router.route ("/")
 .get(wrapAsync(listingController.index))
 .post(
   isLoggedIn,
+    validateListing,
   upload.single("image"),
-  validateListing,
+
   (req, res, next) => {
     console.log("BODY:", req.body);   // ← add this
     console.log("FILE:", req.file);   // ← add this
