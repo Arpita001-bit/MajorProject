@@ -1,12 +1,13 @@
 
 const mongoose = require("mongoose");
 const Review = require("./review");
+const { required } = require("joi");
 const Schema=mongoose.Schema;
 
 const listingSchema = new Schema({
     title:{
         type: String,
-        required: true,
+        required
     },
     description:String,
     
