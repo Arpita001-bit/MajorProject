@@ -27,15 +27,14 @@ const listingController = require("../controllers/listing.js");
 
 // router.route ("/")
 // .get(wrapAsync(listingController.index))
+// router.route("/")
+// .get(wrapAsync(listingController.index))
 router.route("/")
 .get(wrapAsync(listingController.index))
 .post(
   isLoggedIn,
-  upload.single("image"),
   (req, res, next) => {
-    console.log("MULTER DONE - BODY:", JSON.stringify(req.body));
-    console.log("MULTER DONE - FILE:", req.file);
-    console.log("MULTER DONE - ERROR:", req.fileValidationError);
+    console.log("REACHED HERE - BODY:", JSON.stringify(req.body));
     next();
   },
   validateListing,
