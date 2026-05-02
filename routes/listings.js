@@ -33,6 +33,7 @@ router.route ("/")
   upload.single("image"),
 
   (req, res, next) => {
+    console.log(req.user);
     console.log("BODY:", req.body);   // ← add this
     console.log("FILE:", req.file);   // ← add this
     next();
