@@ -94,7 +94,7 @@ app.use((req,res,next)=>{
 
 
 const validateListing=(req,res,next)=>{
-    let {error}= listingSchema.validate(req.body);
+    let { error } = listingSchema.validate(req.body.listing);
   if(error){
             let errMsg=error.details.map((el)=>el.message).join(",");
             throw new ExpressError(400,errMsg);
