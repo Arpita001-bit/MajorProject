@@ -30,9 +30,9 @@ module.exports.index = async(req,res)=>{
 
 
 module.exports.createListing = async (req, res) => {
-  if (!req.user) {
-    req.flash("error", "You must be logged in");
-    return res.redirect("/login");
+  if (!req.body || !req.body.listing) {
+    req.flash("error", "Form not received properly");
+    return res.redirect("/listings/new");
   }
 
   const newListing = new Listing(req.body.listing);
@@ -48,7 +48,6 @@ module.exports.createListing = async (req, res) => {
   await newListing.save();
   res.redirect("/listings");
 };
-
  module.exports.editListing = async(req,res)=>{
     let{id}=req.params;
     const listing = await Listing.findById(id);
