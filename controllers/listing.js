@@ -30,20 +30,18 @@ module.exports.index = async(req,res)=>{
 
 
 module.exports.createListing = async (req, res) => {
-  if (!req.body || !req.body.listing) {
+  if (!req.user) {
+    req.flash("error", "You must be logged in");
+    return res.redirect("/login");
+  }
+
+  if (!req.body?.listing) {
     req.flash("error", "Form not received properly");
     return res.redirect("/listings/new");
   }
 
   const newListing = new Listing(req.body.listing);
   newListing.owner = req.user._id;
-
-  if (req.file) {
-    newListing.image = {
-      url: req.file.path,
-      filename: req.file.filename
-    };
-  }
 
   await newListing.save();
   res.redirect("/listings");

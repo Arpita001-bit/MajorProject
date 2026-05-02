@@ -33,7 +33,7 @@ module.exports.isOwner =async (req,res,next)=>{
 }
 
 module.exports.validateListing=(req,res,next)=>{
-    let {error}=listingSchema.validate(req.body);
+    listingSchema.validate({ listing: req.body.listing })
   if(error){
             let errMsg=error.details.map((el)=>el.message).join(",");
             throw new ExpressError(400,errMsg);
@@ -43,7 +43,7 @@ module.exports.validateListing=(req,res,next)=>{
 };
 
 module.exports.validateReview=(req,res,next)=>{
-    let {error}= reviewSchema.validate(req.body);
+    reviewSchema.validate({ review: req.body.review })
   if(error){
             let errMsg=error.details.map((el)=>el.message).join(",");
             throw new ExpressError(400,errMsg);
