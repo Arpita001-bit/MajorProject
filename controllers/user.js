@@ -35,10 +35,13 @@ module.exports.renderLoginForm =(req,res)=>{
         res.render("users/login.ejs");
     };
 
-module.exports.Login =  async(req,res)=>{
-    req.flash("success","WELCOME BACK TO WANDERLUST !");
-    let redirectUrl = res.locals.redirectUrl || "/listings";
-    res.redirect(redirectUrl);
+module.exports.Login = (req, res) => {
+  req.flash("success", "WELCOME BACK!");
+
+  let redirectUrl = req.session.redirectUrl || "/listings";
+  delete req.session.redirectUrl;
+
+  res.redirect(redirectUrl);
 };
 
 module.exports.Logout = (req,res)=>{
