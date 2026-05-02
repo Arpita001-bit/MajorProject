@@ -34,18 +34,29 @@ module.exports.createListing = async (req, res) => {
     req.flash("error", "You must be logged in");
     return res.redirect("/login");
   }
-
+ 
   if (!req.body?.listing) {
     req.flash("error", "Form not received properly");
     return res.redirect("/listings/new");
   }
-
+ 
   const newListing = new Listing(req.body.listing);
   newListing.owner = req.user._id;
-
+ 
+  // ✅ FIX: Save image from multer into the listing
+  if (req.file) {
+    newListing.image = {
+      url: req.file.path,
+      filename: req.file.filename,
+    };
+  }
+ 
   await newListing.save();
+  req.flash("success", "Listing created successfully!");
   res.redirect("/listings");
 };
+
+
  module.exports.editListing = async(req,res)=>{
     let{id}=req.params;
     const listing = await Listing.findById(id);
