@@ -33,6 +33,7 @@ router.route("/")
 .get(wrapAsync(listingController.index))
 .post(
   isLoggedIn,
+    upload.single("image"),
   (req, res, next) => {
     console.log("REACHED HERE - BODY:", JSON.stringify(req.body));
     next();
