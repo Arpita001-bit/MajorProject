@@ -104,7 +104,7 @@ const validateListing=(req,res,next)=>{
 };
 
 const validateReview=(req,res,next)=>{
-    
+
     let { error } = reviewSchema.validate(req.body.review);
   if(error){
             let errMsg=error.details.map((el)=>el.message).join(",");
@@ -127,8 +127,10 @@ app.all(/(.*)/,(req,res,next)=>{
     next(new ExpressError(404,"page not found !"));
  });
  app.use((err, req, res, next) => {
-  console.log("ERROR:", err.message);  // ← add this line
-  console.log(err.stack);              // ← add this line
+  console.log("ERROR NAME:", err.name);
+  console.log("ERROR MESSAGE:", err.message);
+  console.log("ERROR STACK:", err.stack);
+  console.log("FULL ERROR:", JSON.stringify(err, null, 2));
   let { statusCode = 500, message = "something went wrong!" } = err;
   res.status(statusCode).render("error.ejs", { message });
 });

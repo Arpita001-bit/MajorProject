@@ -95,6 +95,11 @@ module.exports.isOwner =async (req,res,next)=>{
 }
 
 module.exports.validateListing=(req,res,next)=>{
+  console.log("REQ BODY:", JSON.stringify(req.body));  // ← add this
+  console.log("REQ FILE:", req.file);                  // ← add this
+  if (req.body.listing) {
+    delete req.body.listing.image;
+  }
     let {error}=listingSchema.validate({ listing: req.body.listing });
   if(error){
             let errMsg=error.details.map((el)=>el.message).join(",");
@@ -102,7 +107,9 @@ module.exports.validateListing=(req,res,next)=>{
         }else{
             next();
         }
+        
 };
+
 
 module.exports.validateReview=(req,res,next)=>{
     let {error}= reviewSchema.validate({ review: req.body.review });
