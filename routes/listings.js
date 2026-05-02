@@ -28,13 +28,9 @@ const listingController = require("../controllers/listing.js");
 router.route ("/")
 .get(wrapAsync(listingController.index))
 .post(
- 
   isLoggedIn,
   upload.single("image"),
-  (req, res, next) => {
-    console.log("BODY AFTER MULTER:", req.body);
-    next();
-  },
+  validateListing,
   wrapAsync(listingController.createListing)
 );
 // .post(
