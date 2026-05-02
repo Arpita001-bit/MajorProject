@@ -12,6 +12,7 @@ const {listingSchema,reviewSchema} = require("./schema.js");
 const listingsRouter = require("./routes/listings.js");
 const reviewsRouter = require("./routes/reviews.js");
 const app= express();
+app.set("trust proxy", 1);
 const dbUrl = process.env.ATLASDB_URL;
 const session = require("express-session");
 const MongoStore = require('connect-mongo').default;
@@ -23,7 +24,7 @@ const userRouter = require("./routes/user.js");
 const {isLoggedIn} = require("./middleware.js");
 
 
-app.set("trust proxy", 1);
+
 app.engine("ejs",ejsMate);
 app.set("view engine","ejs");
 app.set("views",path.join(__dirname,"views"));
