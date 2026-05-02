@@ -22,6 +22,8 @@ const User=require("./models/user.js");
 const userRouter = require("./routes/user.js");
 const {isLoggedIn} = require("./middleware.js");
 
+
+app.set("trust proxy", 1);
 app.engine("ejs",ejsMate);
 app.set("view engine","ejs");
 app.set("views",path.join(__dirname,"views"));
