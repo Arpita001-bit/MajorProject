@@ -3,7 +3,7 @@ require('dotenv').config();
 }
 
 
-console.log(process.env.SECRET);
+
 
 const express= require("express");
 const router = express.Router();
@@ -30,6 +30,7 @@ router.route ("/")
 .post(
   isLoggedIn,
   upload.single("image"),
+  validateListing,
   (req, res, next) => {
     console.log("BODY:", req.body);   // ← add this
     console.log("FILE:", req.file);   // ← add this

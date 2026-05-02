@@ -5,6 +5,7 @@ const ExpressError =require("./utils/ExpressError.js");
 const {listingSchema,reviewSchema} = require("./schema.js");
 
 
+
 module.exports.isLoggedIn = (req,res,next)=>{
     // console.log(req.path,"..",req.originalUrl);
     if(!req.isAuthenticated()){
@@ -33,7 +34,7 @@ module.exports.isOwner =async (req,res,next)=>{
   next();
 }
 
-module.exports.validateListings=(req,res,next)=>{
+module.exports.validateListing=(req,res,next)=>{
     let {error}= listingSchema.validate(req.body);
   if(error){
             let errMsg=error.details.map((el)=>el.message).join(",");
