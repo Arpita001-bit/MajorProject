@@ -9,7 +9,9 @@ const userController = require("../controllers/user.js");
 router.get("/", (req, res) => {
   res.redirect("/listings");
 });
-
+router.head("/", (req, res) => {
+  res.sendStatus(200);
+});
 router.get("/signup",userController.renderSignupForm);
 
 router.post("/signup", wrapAsync(userController.Signup));
