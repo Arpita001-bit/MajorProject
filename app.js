@@ -126,15 +126,15 @@ app.use("/",userRouter);
 app.all(/(.*)/,(req,res,next)=>{
     next(new ExpressError(404,"page not found !"));
  });
- app.use((err, req, res, next) => {
-  console.log("ERROR NAME:", err.name);
+app.use((err, req, res, next) => {
+  console.log("FULL ERROR OBJECT:", err);
+  console.log("ERROR KEYS:", Object.keys(err));
   console.log("ERROR MESSAGE:", err.message);
   console.log("ERROR STACK:", err.stack);
-  console.log("FULL ERROR:", JSON.stringify(err, null, 2));
+  console.log("IS ERROR INSTANCE:", err instanceof Error);
   let { statusCode = 500, message = "something went wrong!" } = err;
   res.status(statusCode).render("error.ejs", { message });
 });
-
     app.listen(8080,()=>{
     console.log("server is listening to port");
 });
