@@ -28,14 +28,28 @@ const listingController = require("../controllers/listing.js");
 router.route ("/")
 .get(wrapAsync(listingController.index))
 .post(
-  
+
   isLoggedIn,
+   upload.single("image"),
   (req, res, next) => {
     console.log("🔥 PASSED UPLOAD CHECK");
     next();
   },
   wrapAsync(listingController.createListing)
 );
+// .post(
+//   isLoggedIn,
+//     validateListing,
+//   upload.single("image"),
+
+//   (req, res, next) => {
+//     console.log(req.user);
+//     console.log("BODY:", req.body);   // ← add this
+//     console.log("FILE:", req.file);   // ← add this
+//     next();
+//   },
+//   wrapAsync(listingController.createListing)
+// )
 
 
 
