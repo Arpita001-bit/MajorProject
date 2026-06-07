@@ -167,10 +167,12 @@ router.put(
 
 router.delete(
   "/:id",
-  isLoggedIn,
-  isOwner,
+  // isLoggedIn,
+  // isOwner,
   wrapAsync(listingController.deleteListing)
 );
+
+
 
 router.get("/:id/edit", isLoggedIn, isOwner, wrapAsync(listingController.editListing));
 
