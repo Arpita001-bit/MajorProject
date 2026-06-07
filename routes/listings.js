@@ -169,6 +169,7 @@ router.delete(
   "/:id",
   // isLoggedIn,
   // isOwner,
+  // wrapAsync(listingController.deleteListing)
   wrapAsync(listingController.deleteListing)
 );
 
