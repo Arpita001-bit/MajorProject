@@ -1,9 +1,4 @@
 
-// const path = require("path");
-// const methodOverride=require("method-override");
-// const ejsMate = require('ejs-mate');
-// const ExpressError =require("./utils/ExpressError.js");
-// const {listingSchema,reviewSchema} = require("./schema.js");
 // const listingsRouter = require("./routes/listings.js");
 // const reviewsRouter = require("./routes/reviews.js");
 // const app= express();
