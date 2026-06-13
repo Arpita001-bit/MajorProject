@@ -1,6 +1,5 @@
 
-// const listingsRouter = require("./routes/listings.js");
-// const reviewsRouter = require("./routes/reviews.js");
+
 // const app= express();
 // app.set("trust proxy", 1);
 // const dbUrl = process.env.ATLASDB_URL;
