@@ -1,7 +1,6 @@
 
 
-// const app= express();
-// app.set("trust proxy", 1);
+
 // const dbUrl = process.env.ATLASDB_URL;
 // const session = require("express-session");
 // const MongoStore = require('connect-mongo').default;
