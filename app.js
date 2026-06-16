@@ -2,8 +2,7 @@
 
 
 
-// const MongoStore = require('connect-mongo').default;
-// const flash = require("connect-flash");
+
 // const passport=require("passport");
 // const LocalStrategy = require("passport-local");
 // const User=require("./models/user.js");
