@@ -7,11 +7,7 @@
 
 // // const express= require("express");
 // // const router = express.Router();
-// // const Listing = require("../models/listing.js");
-// // const { model } = require("mongoose");
-// // const wrapAsync = require("../utils/wrapAsync.js");
-// // const ExpressError =require("../utils/ExpressError.js");
-// // const { isLoggedIn, isOwner,validateListing} = require("../middleware.js");
+
 // // const multer  = require('multer');
 // // const {storage}= require("../cloudConfig.js");
 // // const upload = multer({storage});
